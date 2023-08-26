@@ -11,20 +11,20 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
-    build: ./backend/
+    image: fascinaturu/kittygram_backend
     env_file: .env
     depends_on:
       - db
     volumes:
       - static:/backend_static
   frontend:
-    env_file: .env
+    image: fascinaturu/kittygram_frontend
     build: ./frontend/
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
   gateway:
-    build: ./nginx/
+    image: fascinaturu/kittygram_gateway
     env_file: .env
     depends_on:
       - backend
