@@ -17,6 +17,7 @@ services:
       - db
     volumes:
       - static:/backend_static
+      - media:/appp/media
   frontend:
     image: fascinaturu/kittygram_frontend
     build: ./frontend/
@@ -32,3 +33,4 @@ services:
       - 9000:80
     volumes:
       - static:/staticfiles/
+      - media:/media
